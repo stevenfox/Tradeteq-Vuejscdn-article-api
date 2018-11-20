@@ -1,0 +1,115 @@
+<!doctype html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+
+<head>
+        <!--Vuejs lib -->
+   
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>TradeTeq Task</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tradeteq Task ">
+    <meta name="author" content="Tradeteq">
+
+
+    <!-- css  declaration-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css"> 
+   
+    <!--Vue, Axios, Moment Js libraries  -->
+     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+     <!--Promise based HTTP client for the browser -->
+     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+
+
+
+</head>
+
+<body>
+  <div class="hr-line rot-right"></div>
+  <div class="hr-line rot-left"></div>
+  <div class="hr-line header-hr"></div>
+   <div id="app" class="container">
+  <section v-if="errored">
+    <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
+  </section>
+
+  <section v-else>
+    <div v-if="loading">Loading...</div>
+      
+    <!--Insight header -->
+    <div v-else class="container-insight">
+        <div class="col-12">
+            <div class="col-sm-8 col-xs-12 row">
+                <p id="insight-type">{{info.value.type}}</p>
+                 <h3 id="comment-title">
+                   {{ info.value.title | titleLimit }}
+                  </h3>
+            </div>
+            <div class="row col-sm-8">
+                <div id="author-name">
+                    <span class="author">{{info.value.authorCode | hyphenRemover}}</span>
+                    <div id="date-published">
+                        <p>{{info.value.datePublished | dateFormat}}</p>
+                    </div>
+                    <div class="social-wrap col-12 row">
+                        <a class="social-icn">
+                            <img src="img/linkedin.svg" alt="Share on Linkedn" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url='+encodeURIComponent(),'Linkedn-share-dialog','width=626,height=436'); return false;">
+                        </a>
+                        <a class="social-icn">
+                            <img src="img/twitter.svg" alt="Share on Twitter" onclick="window.open('https://twitter.com/share?','Twitter-dialog','width=626,height=436'); return false;">
+                        </a>
+                       <a class="social-icn" href="mailto:someone@example.com">
+                          <img src="img/email.svg" > 
+                        </a> 
+                    </div>
+                </div>
+                <div id="figure" class="col-6">
+                    <img v-bind:src="'https:'+info.value.figure.image.src" class="img-fluid rounded-circle">
+                </div>
+            </div>
+        </div>
+        
+        <!--Insight content -->
+       <div class="offset-sm-1 col-11 insight-content">
+        <div v-for="(paragraph, index) in details">
+            <p v-html="paragraph"></p>
+            <div v-if="index==info.value.pullQuote.paragraphPosition" class="col-sm-8 container-quote">  
+                <svg width="1000" height="1000" class="svg-quote">
+                  <rect x="0" y="15%" rx="0" ry="0" width="30%" height="25%" class="shape-rect" />
+                  Sorry, your browser does not support inline SVG.  
+                </svg>
+                    <h3 class="quote-parag"><span class="font-big">“</span>{{info.value.pullQuote.quote}} <span class="font-big">”</span></h3>
+            </div>
+          </div>
+      <!--Insight footer -->  
+        <div class="hr-line"></div>
+           <div class="footer-content col-12 row">
+               <div class="social-wrap col-6 row">
+                    <a class="social-icn">
+                        <img src="img/linkedin.svg" alt="Share on Linkedn" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url='+encodeURIComponent(),'Linkedn-share-dialog','width=626,height=436'); return false;">
+                    </a>
+                    <a class="social-icn">
+                        <img src="img/twitter.svg" alt="Share on Twitter" onclick="window.open('https://twitter.com/share?','Twitter-dialog','width=626,height=436'); return false;">
+                    </a>
+                   <a class="social-icn" href="mailto:someone@example.com">
+                      <img src="img/email.svg" > 
+                    </a> 
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ </div>
+    <!--vue js file -->
+         <script src="js/main.vue"></script>
+</body>
+
+</html>

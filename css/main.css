@@ -1,0 +1,100 @@
+html, body{
+    font-family: Helvetica, Sans-Serif!important;
+    min-width: 460px;
+}
+
+#insight-type{
+    font-size: 1.1em;
+}
+
+.author{
+    font-size: 1.2em;
+    font-weight: lighter;
+    text-transform: capitalize;
+}
+
+.social-icn {
+    width: 35px;
+    margin: 1%;
+}
+.hr-line{
+    border-top: 1px #707070 solid;
+    width: 100%;
+}
+
+.header-hr{
+    margin-top: 5.2%;
+}
+.rot-left{
+    transform: rotate(6deg);
+}
+
+.rot-right{
+    transform: rotate(-6deg);
+}
+
+.shape-rect{
+    fill:#F6601E;
+    stroke-width:0;
+    stroke:rgb(0,0,0); 
+    transform: skew(0, -20deg); 
+    position: absolute;
+}
+
+.marketplace-orange{
+    color: #F6601E;
+}
+
+.svg-quote{
+    position: absolute;
+    left: -35%;
+    margin-top: -36%;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.quote-parag{
+    margin: 10% 0% 10% 0%;
+    z-index: 1;
+    text-transform: lowercase;
+}
+
+.font-big{
+    font-size: 2em;
+}
+
+.insight-content {
+    margin-top: 4%;
+    color: #353535;
+}
+
+.footer-content{
+    margin-top: 2%;
+}
+
+@media only screen and (min-width: 576px) {
+    .container-quote{
+        margin-left: -19px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    
+    .insight-content div:first-child > p::first-letter {
+        font-size: 400%;
+        float: left;
+}
+    .svg-quote{
+        opacity: 0.5;
+    }
+}
+
+@media only screen and (max-width: 464px) {
+    
+    #author-name{
+        margin-left: auto;
+    }
+    #figure{
+        margin-top: -30%;
+    }
+}
